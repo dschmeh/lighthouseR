@@ -17,7 +17,7 @@ lighthouse_install()
 ```
 
 # Starting Lighthouse and retriving data of a specific page
-Install Lighthouse on your machine
+Getting data for a specific URL
 ```
 page<-"https://www.r-project.org/"
 lighthouse(page)
