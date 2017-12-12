@@ -39,9 +39,9 @@ lighthouse <- function(page) {
   #Get the Scores out of the HTML-File
   scores <-
     t(as.data.frame(
-      stringr::str_extract_all(rawHTML, '.score.\\:[0-9]{1,2}\\.[0-9]{0,2}')
+      stringr::str_extract_all(rawHTML, '.(accessibility|best-practices|pwa|performance).,.score.\\:[0-9]{1,3}\\.?[0-9]{0,2}')
     ))
-  scores <- as.data.frame(gsub('"score":', '', scores))
+  scores <- as.data.frame(gsub('"(accessibility|best-practices|pwa|performance)","score":', '', scores))
   if (ncol(scores) > 4) {
     scores <- subset(scores, select = -c(V1))
   }
