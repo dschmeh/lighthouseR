@@ -1,5 +1,5 @@
 # lighthouseR
-A simple Package to start and retrive Data from Lighthouse in R
+A simple Package to start and retrieve Data from Lighthouse in R
 You can find out more about Lighthouse here:https://developers.google.com/web/tools/lighthouse/
 
 # Installation 
