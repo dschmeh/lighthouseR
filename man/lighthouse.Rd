@@ -9,6 +9,6 @@ lighthouse(page)
 \description{
 This function allows you to retrive Lighthouse Data.
 Lighthouse will analyze the Page you specific in the request. Lighthouse will open a new Chrome Window and run various tests.
-The output you will get consists of 4 numeric values: Progressive Web App, Performance, Accessibility, Best Practices. Each a number between 0 (very bad) and 100 (perfect).
+The output you will get consists of 5 numeric values: Progressive Web App, Performance, Accessibility, Best Practices, SEO. Each a number between 0 (very bad) and 100 (perfect).
 Additional to this you will get a HTML-file in your Workspace containing all results of the Lighthouse test. So you can have a deeper look in various parts.
 }
