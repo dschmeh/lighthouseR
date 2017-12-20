@@ -16,7 +16,11 @@ lighthouse <- function(page) {
   } else {
     warning("Scheme (http/https) in the URL is missing")
   }
-  
+  #Check for the correct Lighthouse-Versions
+  ver <- system("lighthouse --version", intern = TRUE)
+  if (ver[1] < 2.7) {
+    warning("Please Update your Lighthouse Version to 2.7 or higher")
+  }
   #TODO: Add more Error Monitoring
   
   #Call the lighthouse module
@@ -52,9 +56,6 @@ lighthouse <- function(page) {
         scores
       )
     )
-  # if (ncol(scores) > 4) {
-  #  scores <- subset(scores, select = -c(V1))
-  #}
   scores$Page <- as.data.frame(page)
   scores$fullReport <- as.data.frame(output)
   colnames(scores) <-
