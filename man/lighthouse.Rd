@@ -4,7 +4,7 @@
 \alias{lighthouse}
 \title{Lighthouse Function}
 \usage{
-lighthouse(page)
+lighthouse(page, view = FALSE)
 }
 \description{
 This function allows you to retrive Lighthouse Data.
