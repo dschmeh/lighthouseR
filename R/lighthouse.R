@@ -30,7 +30,7 @@ lighthouse <- function(page, view = FALSE) {
   #Call the lighthouse module
 
   sys_call <-
-    paste0("lighthouse ", page , if (view == TRUE) {
+    paste0("lighthouse ", page , " --chrome-flags='--headless'", if (view == TRUE) {
       " --view"
     })
   s <- system(sys_call, intern = TRUE)
