@@ -5,14 +5,15 @@
 #' The output you will get consists of 5 numeric values: Progressive Web App, Performance, Accessibility, Best Practices, SEO. Each a number between 0 (very bad) and 100 (perfect).
 #' Additional to this you will get a HTML-file in your Workspace containing all results of the Lighthouse test. So you can have a deeper look in various parts.
 #' @page The Page you want to get analyzed by Lighthouse
+#' @view Logical. Do you want to open the HTML-File after the run? Default is FALSE.
 #' lighthouse()
 
 
 
-lighthouse <- function(page) {
+lighthouse <- function(page, view = FALSE) {
   #Check the Page input if the URL is correct and includes scheme
   if (isTRUE(grepl("http", page))) {
-    
+
   } else {
     warning("Scheme (http/https) in the URL is missing")
   }
@@ -21,25 +22,31 @@ lighthouse <- function(page) {
   if (ver[1] < 2.7) {
     warning("Please Update your Lighthouse Version to 2.7 or higher")
   }
+  if (!is.logical(view)) {
+    stop("The view should be a logical input")
+  }
   #TODO: Add more Error Monitoring
-  
+
   #Call the lighthouse module
-  
-  sys_call <- paste0("lighthouse ", page)
+
+  sys_call <-
+    paste0("lighthouse ", page , if (view == TRUE) {
+      " --view"
+    })
   s <- system(sys_call, intern = TRUE)
-  
+
   #Find the file where we can see the ouptut
-  
+
   output <- s[grep("GMT Printer domhtml output written to", s)]
   output <-
     gsub(".* GMT Printer domhtml output written to ", "", output)
   doc <- stringr::str_split(output, "\\\\")
   doc <- doc[[1]][nrow(as.data.frame(unlist(doc)))]
-  
+
   #Load the file with the Lighthouse Output
-  
+
   rawHTML <- paste(readLines(doc), collapse = "\n")
-  
+
   #Get the Scores out of the HTML-File
   scores <-
     t(as.data.frame(
