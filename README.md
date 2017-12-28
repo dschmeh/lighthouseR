@@ -19,8 +19,8 @@ lighthouse_install()
 ```
 
 # Starting Lighthouse and retriving data of a specific page
-Getting data for a specific URL
+Getting data for a specific URL. The Function will start a Lighthouse-Test for the given URL. This can take up to a minute. If View is TRUE the full report will automaticly open in the Browser. Default for this is FALSE.
 ```
 page<-"https://www.r-project.org/"
-lighthouse(page)
+lighthouse(page, view = FALSE))
 ```
