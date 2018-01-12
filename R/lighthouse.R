@@ -39,7 +39,7 @@ lighthouse <- function(page, view = FALSE) {
 
   #Find the file where we can see the ouptut
 
-  output <- s[grep("GMT Printer domhtml output written to", s)]
+  output <- s[grep("GMT Printer (domhtml|html)  output written to", s)]
   output <-
     gsub(".* GMT Printer (domhtml|html) output written to ", "", output)
   doc <- stringr::str_split(output, "\\\\")
