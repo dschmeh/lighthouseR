@@ -4,12 +4,14 @@
 \alias{lighthouse}
 \title{Lighthouse Function}
 \usage{
-lighthouse(page, view = FALSE)
+lighthouse(page, view = FALSE, keepFile = TRUE)
 }
 \arguments{
 \item{page}{The Page you want to get analyzed by Lighthouse}
 
-\item{view}{Logical. Do you want to open the HTML-File after the run? Default is FALSE.
+\item{view}{Logical. Do you want to open the HTML-File after the run? Default is FALSE.}
+
+\item{keepFile}{Logical. Lighthouse generates a HTML-File with the results and saves it in your Workspace every Time you run it. If you don´t want this set keepFile to FALSE. Default is TRUE.
 lighthouse()}
 }
 \description{
