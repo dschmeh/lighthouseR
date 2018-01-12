@@ -6,6 +6,7 @@
 #' Additional to this you will get a HTML-file in your Workspace containing all results of the Lighthouse test. So you can have a deeper look in various parts.
 #' @param page The Page you want to get analyzed by Lighthouse
 #' @param view Logical. Do you want to open the HTML-File after the run? Default is FALSE.
+#' @param keepFile Logical. Lighthouse generates a HTML-File with the results and saves it in your Workspace every Time you run it. If you don´t want this set keepFile to FALSE. Default is TRUE.
 #' lighthouse()
 #' @examples
 #' \dontrun{
@@ -14,7 +15,9 @@
 
 
 
-lighthouse <- function(page, view = FALSE) {
+lighthouse <- function(page,
+                       view = FALSE,
+                       keepFile = TRUE) {
   #Check the Page input if the URL is correct and includes scheme
   if (!isTRUE(grepl("http", page))) {
     warning("Scheme (http/https) in the URL is missing")
@@ -30,24 +33,30 @@ lighthouse <- function(page, view = FALSE) {
   #TODO: Add more Error Monitoring
 
   #Call the lighthouse module
+  page_path <- gsub("http(s)?\\:\\/\\/", "", page)
+  path <-
+    paste0(
+      "./",
+      page_path,
+      "_",
+      Sys.Date(),
+      "_",
+      format(Sys.time(), "%H_%M_%S"),
+      ".report.html"
+    )
 
   sys_call <-
-    paste0("lighthouse ", page , " --chrome-flags='--headless'", if (view == TRUE) {
-      " --view"
-    })
+    paste0("lighthouse ",
+           page ,
+           " --output-path ",
+           path,
+           " --chrome-flags='--headless'",
+           if (view == TRUE) {
+             " --view"
+           })
   s <- system(sys_call, intern = TRUE)
 
-  #Find the file where we can see the ouptut
-
-  output <- s[grep("GMT Printer (domhtml|html)  output written to", s)]
-  output <-
-    gsub(".* GMT Printer (domhtml|html) output written to ", "", output)
-  doc <- stringr::str_split(output, "\\\\")
-  doc <- doc[[1]][nrow(as.data.frame(unlist(doc)))]
-
-  #Load the file with the Lighthouse Output
-
-  rawHTML <- paste(readLines(doc), collapse = "\n")
+  rawHTML <- paste(readLines(path), collapse = "\n")
 
   #Get the Scores out of the HTML-File
   scores <-
@@ -66,7 +75,10 @@ lighthouse <- function(page, view = FALSE) {
       )
     )
   scores$Page <- as.data.frame(page)
-  scores$fullReport <- as.data.frame(output)
+  output <- paste0(getwd(), gsub("\\.\\/", "\\/", path))
+  if (isTRUE(keepFile)) {
+    scores$fullReport <- as.data.frame(output)
+  }
   colnames(scores) <-
     c(
       "Progressive_Web_App",
@@ -75,8 +87,15 @@ lighthouse <- function(page, view = FALSE) {
       "Best_Practices",
       "SEO",
       "Page",
-      "fullReport"
+      if (isTRUE(keepFile)) {
+        "fullReport"
+      }
     )
   rownames(scores) <- "1"
+
+  if (!isTRUE(keepFile)) {
+    file.remove(output)
+  }
+
   return(scores)
 }
