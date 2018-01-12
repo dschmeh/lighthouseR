@@ -8,13 +8,10 @@ Description: This package allows you to retrive Lighthouse Data and install Ligh
     Lighthouse will analyze the Page you specific in the request. Lighthouse will open a new Chrome Window and run various tests.
     The output you will get consists of 4 numeric values: Progressive Web App, Performance, Accessibility, Best Practices. Each a number between 0 (very bad) and 100 (perfect).
     Additional to this you will get a HTML-file in your Workspace containing all results of the Lighthouse test. So you can have a deeper look in various parts.
-    You can find more information about Lighthouse her: https://developers.google.com/web/tools/lighthouse/
-License: MIT
+    You can find more information about Lighthouse her: https://developers.google.com/web/tools/lighthouse/.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1.9000
-Depends:
-    stringr,
-    jsonlite,
-    httr,
-    rvest
+Imports:
+    stringr
