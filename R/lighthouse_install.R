@@ -2,6 +2,9 @@
 #'
 #' This function allows you to install Lighthouse on your lovcal machine.
 #' lighthouse_install()
+#' @examples{
+#' lighthouse_install()
+#' }
 
 
 lighthouse_install <- function() {
