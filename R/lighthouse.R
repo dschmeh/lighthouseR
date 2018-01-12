@@ -4,17 +4,19 @@
 #' Lighthouse will analyze the Page you specific in the request. Lighthouse will open a new Chrome Window and run various tests.
 #' The output you will get consists of 5 numeric values: Progressive Web App, Performance, Accessibility, Best Practices, SEO. Each a number between 0 (very bad) and 100 (perfect).
 #' Additional to this you will get a HTML-file in your Workspace containing all results of the Lighthouse test. So you can have a deeper look in various parts.
-#' @page The Page you want to get analyzed by Lighthouse
-#' @view Logical. Do you want to open the HTML-File after the run? Default is FALSE.
+#' @param page The Page you want to get analyzed by Lighthouse
+#' @param view Logical. Do you want to open the HTML-File after the run? Default is FALSE.
 #' lighthouse()
+#' @examples
+#' \dontrun{
+#' lighthouse("https://www.r-project.org/")
+#' }
 
 
 
 lighthouse <- function(page, view = FALSE) {
   #Check the Page input if the URL is correct and includes scheme
-  if (isTRUE(grepl("http", page))) {
-
-  } else {
+  if (!isTRUE(grepl("http", page))) {
     warning("Scheme (http/https) in the URL is missing")
   }
   #Check for the correct Lighthouse-Versions
@@ -39,7 +41,7 @@ lighthouse <- function(page, view = FALSE) {
 
   output <- s[grep("GMT Printer domhtml output written to", s)]
   output <-
-    gsub(".* GMT Printer domhtml output written to ", "", output)
+    gsub(".* GMT Printer (domhtml|html) output written to ", "", output)
   doc <- stringr::str_split(output, "\\\\")
   doc <- doc[[1]][nrow(as.data.frame(unlist(doc)))]
 
