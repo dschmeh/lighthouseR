@@ -2,7 +2,7 @@
 A simple Package to start and retrieve Data from Lighthouse in R
 You can find out more about Lighthouse here:https://developers.google.com/web/tools/lighthouse/
 
-WARNING: The Package currently just works on Windows machines.
+lighthouseR requires Node 6 or later.
 
 # Installation 
 To get the current development version from github:
