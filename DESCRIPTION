@@ -1,17 +1,19 @@
 Package: lighthouseR
 Type: Package
-Title: A simple Package to start and retrive Data from Lighthouse in R
+Title:Start and Retrieve Data from 'Lighthouse' in 'R'
 Version: 0.1.0
 Author: Daniel Schmeh
 Maintainer: Daniel Schmeh <danielschmeh@gmail.com>
-Description: This package allows you to retrive Lighthouse Data and install Lighthouse on your locale machine.
-    Lighthouse will analyze the Page you specific in the request. Lighthouse will open a new Chrome Window and run various tests.
-    The output you will get consists of 5 numeric values: Progressive Web App, Performance, Accessibility, Best Practices and SEO. Each a number between 0 (very bad) and 100 (perfect).
-    Additional to this you will get a HTML-file in your Workspace containing all results of the Lighthouse test. So you can have a deeper look in various parts.
-    You can find more information about Lighthouse her: https://developers.google.com/web/tools/lighthouse/.
+Description: Allows you to retrieve 'Lighthouse' Data and install 'Lighthouse' on your locale machine.
+    'Lighthouse' will analyze the Page you specific in the request. 'Lighthouse' will open a new 'Chrome' Window and run various tests.
+    The output you will get consists of 5 numeric values: 'Progressive Web App', 'Performance', 'Accessibility', 'Best Practice's and 'SEO'. Each a number between 0 (very bad) and 100 (perfect).
+    Additional to this you will get a 'HTML-file' in your Workspace containing all results of the 'Lighthouse' test. So you can have a deeper look in various parts.
+    You can find more information about 'Lighthouse' here: <https://developers.google.com/web/tools/lighthouse/>.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1.9000
 Imports:
-    stringr
+    stringr,
+    utils
+SystemRequirements: lighthouseR requires Node 6 or later.     
