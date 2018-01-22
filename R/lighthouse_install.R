@@ -3,7 +3,8 @@
 #' This function allows you to install Lighthouse on your local machine.
 #' @param prefix You can specify where you want Lighthouse to installed on your machine.
 #' lighthouse_install()
-#' @examples{
+#' @examples
+#' \dontrun{
 #' lighthouse_install()
 #' }
 
