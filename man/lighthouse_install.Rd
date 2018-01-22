@@ -4,14 +4,17 @@
 \alias{lighthouse_install}
 \title{Lighthouse_install Function}
 \usage{
-lighthouse_install()
+lighthouse_install(prefix = "")
+}
+\arguments{
+\item{prefix}{You can specify where you want Lighthouse to installed on your machine.
+lighthouse_install()}
 }
 \description{
-This function allows you to install Lighthouse on your lovcal machine.
-lighthouse_install()
+This function allows you to install Lighthouse on your local machine.
 }
 \examples{
-{
+\dontrun{
 lighthouse_install()
 }
 }
