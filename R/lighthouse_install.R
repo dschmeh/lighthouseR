@@ -12,8 +12,8 @@
 lighthouse_install <- function(prefix = "") {
   #System Call to install lighthouse on the local machine
   #Check if Lighthouse and correct Version is allready installed
-  ver <- system("lighthouse --version", intern = TRUE)
-  if (ver[1] < 2.7) {
+  ver <- try(system("lighthouse --version", intern = TRUE))
+  if (ver[1] < 2.7 || grepl( 'Error', ver[1])) {
     choice <-
       utils::menu(c("Y", "N"), title = "Are you sure you want to install Lighthouse on your machine?")
     if (choice == 1) {
