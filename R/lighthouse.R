@@ -74,10 +74,10 @@ lighthouse <- function(page,
         scores
       )
     )
-  scores$Page <- as.data.frame(page)
+  scores$Page <- as.character(page)
   output <- paste0(getwd(), gsub("\\.\\/", "\\/", path))
   if (isTRUE(keepFile)) {
-    scores$fullReport <- as.data.frame(output)
+    scores$fullReport <- as.character(output)
   }
   colnames(scores) <-
     c(
