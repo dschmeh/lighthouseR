@@ -37,7 +37,7 @@ lighthouse <- function(page,
   path <-
     paste0(
       "./",
-      page_path,
+      gsub("\\/$","",page_path),
       "_",
       Sys.Date(),
       "_",
