@@ -1,4 +1,6 @@
 # lighthouseR
+[![Rdoc](https://api.travis-ci.org/dschmeh/lighthouseR.svg?branch=master)](https://api.travis-ci.org/dschmeh/lighthouseR.svg?branch=master)
+
 A simple Package to start and retrieve Data from Lighthouse in R
 You can find out more about Lighthouse here:https://developers.google.com/web/tools/lighthouse/
 
