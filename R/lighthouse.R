@@ -30,6 +30,9 @@ lighthouse <- function(page,
   if (!is.logical(view)) {
     stop("The view should be a logical input")
   }
+  if (!is.logical(keepFile)) {
+    stop("The keepFile should be a logical input")
+  }
   #TODO: Add more Error Monitoring
 
   #Call the lighthouse module
