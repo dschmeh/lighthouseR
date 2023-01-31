@@ -84,11 +84,11 @@ lighthouse <- function(page,
   }
   colnames(scores) <-
     c(
-      "Progressive_Web_App",
       "Performance",
       "Accessibility",
       "Best_Practices",
       "SEO",
+      "Progressive_Web_App",
       "Page",
       if (isTRUE(keepFile)) {
         "fullReport"
